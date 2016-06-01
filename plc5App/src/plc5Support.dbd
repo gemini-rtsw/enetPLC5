@@ -1,0 +1,6 @@
+device(bo, INST_IO, devOrnlPLC5Bo, "ornlEnetPLC5")
+device(bi, INST_IO, devOrnlPLC5Bi, "ornlEnetPLC5")
+device(ai, INST_IO, devOrnlPLC5Ai, "ornlEnetPLC5")
+device(ao, INST_IO, devOrnlPLC5Ao, "ornlEnetPLC5")
+driver(drvOrnlPLC5)
+registrar(iocCommandsRegistrar)
