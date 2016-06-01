@@ -6,8 +6,6 @@ include $(TOP)/configure/CONFIG
 
 #=============================
 
-# PLC5 Support thusfar only works on 32-bit linux
-EPICS_HOST_ARCH=linux-x86
 
 # Install deviceSupport.dbd into <top>/dbd
 DBD += plc5Support.dbd
