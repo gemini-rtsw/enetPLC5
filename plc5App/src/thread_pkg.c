@@ -88,7 +88,7 @@ int thread_unlock (
         ) {
 
     THREAD_LOCK_PTR priv_thr_lock;
-    int stat;
+    int stat; 
 
     if ( g_init ) return THR_BADSTATE;
 
@@ -288,7 +288,8 @@ int thread_destroy_lock_handle (
         ) {
 
     THREAD_LOCK_PTR priv_thr_lock;
-    int stat, ret_stat;
+    /* int stat, ret_stat; */
+    int ret_stat;
 
     if ( g_init ) return THR_BADSTATE;
 
@@ -915,7 +916,7 @@ int thread_detached_exit(
         ) {
 
     THREAD_ID_PTR priv_handle;
-    int stat;
+    /* int stat; */
 
     if ( g_init ) return THR_BADSTATE;
 

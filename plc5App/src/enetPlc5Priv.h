@@ -1,8 +1,8 @@
 #ifndef __enetPlc5Priv_linux_h
 #define __enetPlc5Priv_linux_h 1
 
-#include "enetPlc5-linux.h"
-#include "drvOrnlPLC5-linux.h"
+#include "enetPlc5.h"
+#include "drvOrnlPLC5.h"
 
 #define PLC5 1
 #define PLC5250 2

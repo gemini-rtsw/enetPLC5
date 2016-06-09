@@ -7,7 +7,7 @@
 
 #include "pls.h"
 #include "devManager.h"
-#include "drvOrnlPLC5-linux.h"
+#include "drvOrnlPLC5.h"
 
 long epicsShareAPI snap_db (
   char *arg1,

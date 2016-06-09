@@ -868,8 +868,8 @@ static int buildListFromFile (
 ) {
 
 int stat, state, dup;
-devListPtr curDev;
-propListPtr curProp;
+devListPtr curDev = NULL;
+propListPtr curProp = NULL;
 char devType[31+1], devName[63+1], devUnit[7+1], keyword[63+1],
  value[63+1];
 
@@ -2156,7 +2156,8 @@ int n0, n1;
   return ERR_OK;
 
 }
-
+
+#if 0
 static int checkBus (
   propListPtr curProp
 ) {
@@ -2199,7 +2200,9 @@ int n0;
   return ERR_OK;
 
 }
-
+#endif
+
+
 static int verifyList ( void ) {
 
 int stat, retStat = ERR_OK;

@@ -49,8 +49,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <fcntl.h>
-#include "ctype.h"
-#include "math.h"
+#include <ctype.h>
+#include <math.h>
 #include <signal.h>
 #include <setjmp.h>
 #include <errno.h>
@@ -63,15 +63,15 @@
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 
-#include "dbDefs.h"
-#include "dbAccess.h"
-#include "dbFldTypes.h"
-#include "registryFunction.h"
-#include "drvSup.h"      /* EPICS driver support library         */
-#include "epicsExport.h"
+#include <dbDefs.h>
+#include <dbAccess.h>
+#include <dbFldTypes.h>
+#include <registryFunction.h>
+#include <drvSup.h>      /* EPICS driver support library         */
+#include <epicsExport.h>
+#include <drvSup.h>      /* EPICS driver support library         */
 
-#include "drvSup.h"      /* EPICS driver support library         */
-#include "drvOrnlPLC5-linux.h"
+#include "drvOrnlPLC5.h"
 
 #define REMQHI( queue, buf, flag )\
     sys_remqh( (void *) (queue), (void **) (buf), (int) (flag) )
@@ -1088,14 +1088,14 @@ static void trimWhiteSpace (
     ii = 0;
 
     i = 0;
-    while ( ( i < l ) && isspace( str[i] ) ) {
+    while ( ( i < l ) && isspace( (unsigned char)str[i] ) ) {
         i++;
     }
 
     first = i;
 
     i = l-1;
-    while ( ( i >= first ) && isspace( str[i] ) ) {
+    while ( ( i >= first ) && isspace( (unsigned char)str[i] ) ) {
         i--;
     }
 
@@ -1152,7 +1152,7 @@ static int legalInt (
                     continue;
                 }
 
-                if ( isdigit(buf[i]) ) {
+                if ( isdigit((unsigned char)buf[i]) ) {
                     i++;
                     state = NUM;
                     continue;
@@ -1165,7 +1165,7 @@ static int legalInt (
 
             case NUM:
 
-                if ( isdigit(buf[i]) ) {
+                if ( isdigit((unsigned char)buf[i]) ) {
                     i++;
                     continue;
                 }
@@ -3754,7 +3754,7 @@ static int readFile (
 
         for ( i=0; i<l; i++ ) {
 
-            if ( !isspace( (int) g_buf[i] ) ) {
+            if ( !isspace( (unsigned char) g_buf[i] ) ) {
                 blank = 0;
                 break;
             }

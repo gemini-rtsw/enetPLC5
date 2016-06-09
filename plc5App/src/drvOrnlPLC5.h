@@ -3,7 +3,7 @@
 
 #include <time.h>
 #include <sys/times.h>
-#include "enetPlc5-linux.h"
+#include "enetPlc5.h"
 #include "ornl_sys_types.h"
 #include "ornl_avl.h"
 #include "ornl_thread.h"

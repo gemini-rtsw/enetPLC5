@@ -14,7 +14,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <time.h>
-#include <linux/unistd.h>
+#include <unistd.h> 
 #include <errno.h>
 #include "ornl_sys_types.h"
 #include "ornl_thread.h"

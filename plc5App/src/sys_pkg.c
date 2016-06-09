@@ -246,7 +246,7 @@ static int isInteger (
 int i;
 
   for ( i=0; i<strlen(string); i++ ) {
-    if ( !isdigit( string[i] ) ) return 0;
+    if ( !isdigit( (unsigned char)string[i] ) ) return 0;
   }
 
   return 1;
@@ -279,7 +279,7 @@ static char *months[] = {
   if ( len > 255 ) len = 255;
 
   for ( i=0; i<len; i++ ) {
-    buf[i] = tolower(string[i]);
+    buf[i] = tolower((unsigned char)string[i]);
   }
   buf[len] = 0;
 

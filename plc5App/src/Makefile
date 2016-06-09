@@ -17,9 +17,9 @@ plc5Support_SRCS += iocCommands.c
 plc5Support_SRCS += devManager.c
 plc5Support_SRCS += pls.c
 plc5Support_SRCS += snap_db.c
-plc5Support_SRCS += enetPlc5Pkg-linux.c
-plc5Support_SRCS += drvOrnlPLC5-linux.c
-plc5Support_SRCS += devOrnlPLC5-linux.c
+plc5Support_SRCS += enetPlc5Pkg.c
+plc5Support_SRCS += drvOrnlPLC5.c
+plc5Support_SRCS += devOrnlPLC5.c
 
 # ornlSupport (just the Linux stuff)
 plc5Support_SRCS += sys_pkg.c

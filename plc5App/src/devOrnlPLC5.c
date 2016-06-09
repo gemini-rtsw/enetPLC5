@@ -37,7 +37,7 @@
 #include	"biRecord.h"
 #include	"boRecord.h"
 
-#include "devOrnlPLC5-linux.h"
+#include "devOrnlPLC5.h"
 
 static long devOrnlPLC5Init();
 
@@ -451,7 +451,7 @@ static int parseParamsCheck (
   if ( tok ) {
     tok++;
 		if (tok) {
-			if (isalpha(*tok)) {
+			if (isalpha((unsigned char)*tok)) {
 				*unitCheck = -1;
 			} else {
 			  *unitCheck = atol( tok );
@@ -1114,7 +1114,7 @@ static long devOrnlPLC5InitAoRecord (
 ornlPLC5DevHandle handle;
 ornlPLC5DevHandle handleCheck;
 char moduleName[31+1], devName[31+1], plc5Addr[31+1], plc5Trans[31+1];
-int unit, channel, stat, unitCheck;
+int unit, channel, stat, unitCheck=-1;
 struct instio *pinstio;
 callBackPtr curCallBack;
 
@@ -1538,6 +1538,7 @@ ornlPLC5DevHandle handle = (ornlPLC5DevHandle) ptr->dpvt;
 
 }
 
+#if 0
 static int boReadIniValDirect (
   struct boRecord *ptr
 ) {
@@ -1566,6 +1567,7 @@ ornlPLC5DevHandle handle = (ornlPLC5DevHandle) ((ornlPLC5DevPtr) ptr->dpvt)->che
   return ORNL_PLC5_SUCCESS;
 
 }
+#endif
 
 /**
  * The Init function parses out the PLC address and gets a device handle from driver support. For direct
@@ -1582,7 +1584,7 @@ static long devOrnlPLC5InitBoRecord (
 ornlPLC5DevHandle handle;
 ornlPLC5DevHandle handleCheck;
 char moduleName[31+1], devName[31+1], plc5Addr[31+1], plc5Trans[31+1];
-int unit, channel, stat, unitCheck;
+int unit, channel, stat, unitCheck=-1;
 struct instio *pinstio;
 callBackPtr curCallBack;
 

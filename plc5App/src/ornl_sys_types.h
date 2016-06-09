@@ -23,8 +23,13 @@
 #define SYS_SUCCESS 0x10008003
 #define SYS_SUCCESS_IDX 74
 
+#ifndef TRUE
 #define TRUE 1
+#endif
+
+#ifndef FALSE
 #define FALSE 0
+#endif
 
 /***
 * macros
