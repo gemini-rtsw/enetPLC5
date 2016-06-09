@@ -8,6 +8,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <sys/time.h>
+#include <sys/select.h>
 #include <errno.h>
 
 #include "ornl_sys_types.h"
