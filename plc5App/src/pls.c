@@ -507,6 +507,7 @@ int socketOpened=0, newSocketOpened=0;
 
     fprintf( stderr, "%s - exception! Last line: %d\n", __FILE__, line );
 
+#if 0
 #ifdef vxWorks
     taskDelay(3*60);
 #endif
@@ -514,6 +515,8 @@ int socketOpened=0, newSocketOpened=0;
 #ifdef linux
     sleep(3);
 #endif
+#endif
+   epicsThreadSleep(3.0);
 
     if ( socketOpened ) {
       stat = close( sockfd );
@@ -548,9 +551,11 @@ int socketOpened=0, newSocketOpened=0;
     stat = setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR,
      (char *) &value, len );
 
+#if 0
 #ifdef linux
     stat = setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR,
      &value, len );
+#endif
 #endif
 
     if ( sockfd == -1 ) {
@@ -615,7 +620,8 @@ int socketOpened=0, newSocketOpened=0;
 
       line = __LINE__;
 
-#ifdef linux
+#if 1
+//#ifdef linux
       value = 1;
       len = sizeof(value);
       stat = setsockopt( newsockfd, IPPROTO_TCP, TCP_NODELAY, &value, len );

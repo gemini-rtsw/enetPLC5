@@ -7,8 +7,10 @@
  * from Octal to Binary so that the user can enter Octal numbers
  * for I: and O: type addresses.
  */
-#include "enetPlc5Priv-linux.h"
+#include "enetPlc5Priv.h"
 #include <strings.h>
+#include <sys/select.h>
+
 
 /* ============================================================== */
 
@@ -432,7 +434,7 @@ if (strstr(addr, "T4")) {
 #endif
 
   if ( rcvBuf.sts != 0 ) {
-    if ( plc5Msgs() ) printf( "sin_addr = %-x [hex]\n", ptr->sockAddr.sin_addr.s_addr );
+    if ( plc5Msgs() ) printf( "sin_addr = %-x [hex]\n", (unsigned int)(ptr->sockAddr.sin_addr.s_addr ));
     if ( plc5Msgs() ) printf( "rcvBuf.sts = %-d\n", rcvBuf.sts );
     if ( rcvBuf.sts == 0xf0 ) {
       if ( plc5Msgs() ) printf( "ext sts = %-d\n", (int) rcvBuf.a );
@@ -1288,14 +1290,14 @@ int first, last, i, ii, l;
   ii = 0;
 
   i = 0;
-  while ( ( i < l ) && isspace( str[i] ) ) {
+  while ( ( i < l ) && isspace( (unsigned char)str[i] ) ) {
     i++;
   }
 
   first = i;
 
   i = l-1;
-  while ( ( i >= first ) && isspace( str[i] ) ) {
+  while ( ( i >= first ) && isspace( (unsigned char)str[i] ) ) {
     i--;
   }
 
@@ -1347,7 +1349,7 @@ int i, l, legal, state;
         continue;
       }
         
-      if ( isdigit(buf[i]) ) {
+      if ( isdigit((unsigned char)buf[i]) ) {
         i++;
         state = NUM;
         continue;
@@ -1360,7 +1362,7 @@ int i, l, legal, state;
 
     case NUM:
 
-      if ( isdigit(buf[i]) ) {
+      if ( isdigit((unsigned char)buf[i]) ) {
         i++;
         continue;
       }
