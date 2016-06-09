@@ -8,6 +8,7 @@
  * for I: and O: type addresses.
  */
 #include "enetPlc5Priv-linux.h"
+#include <strings.h>
 
 /* ============================================================== */
 
@@ -1036,7 +1037,6 @@ errReturn:
 /* ============================================================== */
 
 /* private */
-
 static int netConnectError (
   int err
 ) {
@@ -1048,7 +1048,12 @@ static int netConnectError (
   if ( err == ECONNABORTED ) return 1;
   if ( err == ECONNRESET ) return 1;
   if ( err == ENOTCONN ) return 1;
-  if ( err == ESHUTDOWN ) return 1;
+  /* 
+   *
+   * Deleted. Rippa 06012016 ... Search on RTEMS exploder ...
+   * if ( err == ESHUTDOWN ) return 1;
+   *
+   */
   if ( err == ETIMEDOUT ) return 1;
   if ( err == ENETDOWN ) return 1;
   if ( err == EHOSTUNREACH ) return 1;

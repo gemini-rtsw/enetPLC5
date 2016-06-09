@@ -30,6 +30,12 @@
 #define FD_TABLE_SIZE getdtablesize()
 #endif
 
+#if defined (__rtems__)
+#include <strings.h>
+#include <sys/select.h>
+#define FD_TABLE_SIZE FD_SETSIZE 
+#endif
+
 #include "dbDefs.h"
 #include "errlog.h"
 #include "ellLib.h"
@@ -538,10 +544,8 @@ int socketOpened=0, newSocketOpened=0;
     value = 1;
     len = sizeof(value);
 
-#ifdef vxWorks
     stat = setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR,
      (char *) &value, len );
-#endif
 
 #ifdef linux
     stat = setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR,

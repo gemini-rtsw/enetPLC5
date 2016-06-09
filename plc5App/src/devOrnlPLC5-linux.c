@@ -1689,45 +1689,45 @@ err_return:
 }
 
 static long devOrnlPLC5WriteBo (
-  struct boRecord *ptr
-) {
+        struct boRecord *ptr
+        ) {
 
-int stat;
-ornlPLC5DevHandle handle = (ornlPLC5DevHandle) ptr->dpvt;
+    int stat;
+    ornlPLC5DevHandle handle = (ornlPLC5DevHandle) ptr->dpvt;
 
 
-  if ( ptr->pact ) return 0;
+    if ( ptr->pact ) return 0;
 
-/* if the check flag is set we don't do a write, but the record will still process
-   The check flag is set in the check scan routine for any changed Bo PV */
-	
-  if (((ornlPLC5DevPtr) ptr->dpvt)->checkFlag != 0) {
+    /* if the check flag is set we don't do a write, but the record will still process
+       The check flag is set in the check scan routine for any changed Bo PV */
+
+    if (((ornlPLC5DevPtr) ptr->dpvt)->checkFlag != 0) {
 
 #if 0
-  printf( "devOrnlPLC5WriteBo %s check process (no write to PLC)\n", ptr->name);
+        printf( "devOrnlPLC5WriteBo %s check process (no write to PLC)\n", ptr->name);
 #endif
 
-    ((ornlPLC5DevPtr) ptr->dpvt)->checkFlag = 0;
-	 return 0;
-  }
-  
+        ((ornlPLC5DevPtr) ptr->dpvt)->checkFlag = 0;
+        return 0;
+    }
+
 #ifdef ORNL_DISA_WARM_START
-  if ( ptr->disa == 0 ) {
-    return 2; /* don't convert */
-  }
+    if ( ptr->disa == 0 ) {
+        return 2; /* don't convert */
+    }
 #endif
 
 #if 0
-  printf( "devOrnlPLC5WriteBo %p\n", handle);
+    printf( "devOrnlPLC5WriteBo %p\n", handle);
 #endif
 
 
-  stat = ornlPLC5WriteBit( handle, (int) ptr->rval );
-  if ( !( stat & 1 ) ) {
-    recGblSetSevr( ptr, WRITE_ALARM, INVALID_ALARM);
-  }
+    stat = ornlPLC5WriteBit( handle, (int) ptr->rval );
+    if ( !( stat & 1 ) ) {
+        recGblSetSevr( ptr, WRITE_ALARM, INVALID_ALARM);
+    }
 
-  return 0;
+    return 0;
 
 }
 
