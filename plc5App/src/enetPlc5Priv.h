@@ -45,8 +45,8 @@ typedef struct enetHdrTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
+  unsigned int conId;
+  unsigned int status;
   customConnectInfoType custom;
 } enetHdrType, *enetHdrPtr;
 
@@ -65,10 +65,10 @@ typedef struct rdModWrtReqTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* request msg hdr */
   unsigned char dst;
@@ -96,10 +96,10 @@ typedef struct rdModWrtReplyTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* reply msg hdr */
   unsigned char src;
@@ -123,10 +123,10 @@ typedef struct readBlockReqTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* request msg hdr */
   unsigned char dst;
@@ -154,10 +154,10 @@ typedef struct readBlockReplyTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* reply msg hdr */
   unsigned char src;
@@ -182,10 +182,10 @@ typedef struct wrtBlockReqTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* request msg hdr */
   unsigned char dst;
@@ -215,10 +215,10 @@ typedef struct wrtBlockReplyTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* reply msg hdr */
   unsigned char src;
@@ -242,10 +242,10 @@ typedef struct wrtBitReqTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* request msg hdr */
   unsigned char dst;
@@ -274,10 +274,10 @@ typedef struct wrtBitReplyTag {
   unsigned char mode;
   unsigned char subMode;
   unsigned short pccc_length;
-  unsigned long conId;
-  unsigned long status;
-  unsigned long request_id;
-  unsigned long name_id;
+  unsigned int conId;
+  unsigned int status;
+  unsigned int request_id;
+  unsigned int name_id;
   unsigned char unused[8];
   /* reply msg hdr */
   unsigned char src;
@@ -296,7 +296,7 @@ typedef struct privEnetPlc5CommTag {
   int plcType;
   struct sockaddr_in sockAddr;
   int sockfd;
-  unsigned long conId;      /* stored in network byte order */
+  unsigned int conId;      /* stored in network byte order */
   int connected;
   unsigned short tns;
   SYS_TIME_TYPE timeout;
