@@ -12,14 +12,17 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
+#include <iocsh.h>
+#include <epicsExport.h>
+
 #include <errno.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 
 #ifdef vxWorks
 #include <time.h>
-#include <sys/times.h>
 #include <taskLib.h>
+#include <sys/times.h>
 #include <sockLib.h>
 #include <selectLib.h>
 #define FD_TABLE_SIZE FD_SETSIZE
@@ -55,7 +58,7 @@
 #include"epicsVersion.h"
 #endif
 
-#if EPICS_VERSION >= 3 && EPICS_REVISION >= 14
+#if EPICS_VERSION >= 3 
 
 #define epicsExportSharedSymbols
 
@@ -766,7 +769,7 @@ long epicsShareAPI pvlistserver (
   char *arg0
 ) {
 
-#if EPICS_VERSION >= 3 && EPICS_REVISION >= 14
+#if EPICS_VERSION >= 3 
 
 epicsThreadId id;
 static int port;

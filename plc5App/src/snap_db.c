@@ -13,6 +13,9 @@
 #include "epicsThread.h"
 #include "epicsMutex.h"
 
+#include <iocsh.h>
+#include <epicsExport.h>
+
 #define SNAP_SUCCESS	1
 #define SNAP_ERROR	2
 #define SNAP_WARNING	3

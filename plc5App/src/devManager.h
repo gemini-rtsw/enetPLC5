@@ -7,10 +7,18 @@
 #include <string.h>
 #include <errno.h>
 
+#include <iocsh.h>
+#include <epicsExport.h>
+
 #include "ornl_avl.h"
 
 #include "dbCommon.h"
 #define epicsExportSharedSymbols
+
+long epicsShareAPI devMgrInit (
+  char *fileName
+);
+
 
 typedef struct propFieldTag {
   char *name;         /* for reports, prompts, etc. */
@@ -113,9 +121,6 @@ typedef struct devListTag {
   AVL_HANDLE properties;
 } devListType, *devListPtr;
 
-long epicsShareAPI devMgrInit (
-  char *fileName
-);
 
 int devMgrGetFirst (
   char *name,
