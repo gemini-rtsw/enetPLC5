@@ -3,7 +3,7 @@
 %define repository gemdev
 %define debug_package %{nil}
 %define arch %(uname -m)
-%define checkout %(git log --pretty=format:'%h' -n 1) 
+%define checkout %(if [ -n "$GIT_HASH" ]; then echo "$GIT_HASH"; else git rev-parse --short HEAD 2>/dev/null || echo nogit; fi)
 
 #These global defines are added to prevent stripping
 # symbols on vxWorks cross-compiled code
@@ -19,14 +19,17 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 2.1.12
-Release: 2%{?dist}
+Release: 2.git.%{checkout}%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
 ExclusiveArch: %{arch}
 Prefix: %{_prefix}
 ## You may specify dependencies here
-BuildRequires: epics-base-devel re2c tdct
+## epics-base-devel is pinned exactly; re2c/tdct are build-only tools.
+BuildRequires: epics-base-devel = 7.0.7-0.git.16f5056.el8
+BuildRequires: re2c
+BuildRequires: tdct
 Requires: epics-base
 ## Switch dependency checking off
 # AutoReqProv: no
@@ -38,7 +41,9 @@ This is the module %{name}.
 %package devel
 Summary: %{name}-devel Package
 Group: Development/Gemini
-Requires: %{name} tdct epics-base-devel
+Requires: %{name} = %{version}-%{release}
+Requires: tdct
+Requires: epics-base-devel = 7.0.7-0.git.16f5056.el8
 %description devel
 This is the module %{name}.
 
