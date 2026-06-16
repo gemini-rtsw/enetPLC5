@@ -1,4 +1,4 @@
-[submodule "gem-ci"]
-	path = gem-ci
-	url = ../../gem-ci
-	branch = unstable/2024q4
+[submodule "gemini-rtsw-ci"]
+	path = gemini-rtsw-ci
+	url = https://github.com/gemini-rtsw/gemini-rtsw-ci.git
+	branch = main-el8
