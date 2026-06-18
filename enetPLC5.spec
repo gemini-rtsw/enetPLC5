@@ -27,7 +27,7 @@ ExclusiveArch: %{arch}
 Prefix: %{_prefix}
 ## You may specify dependencies here
 ## epics-base-devel is pinned exactly; re2c/tdct are build-only tools.
-BuildRequires: epics-base-devel = 7.0.7-0.git.bb87399%{?dist}
+BuildRequires: epics-base-devel = 7.0.7-0.git.f9e3717%{?dist}
 BuildRequires: re2c
 BuildRequires: tdct
 Requires: epics-base
@@ -43,7 +43,7 @@ Summary: %{name}-devel Package
 Group: Development/Gemini
 Requires: %{name} = %{version}-%{release}
 Requires: tdct
-Requires: epics-base-devel = 7.0.7-0.git.bb87399%{?dist}
+Requires: epics-base-devel = 7.0.7-0.git.f9e3717%{?dist}
 %description devel
 This is the module %{name}.
 
